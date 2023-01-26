@@ -17,7 +17,7 @@ exports.list = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Server error",
-            data: err.message
+            error: err.message
         });
     }
 }
@@ -44,7 +44,7 @@ exports.store = async(req, res) => {
         res.status(500).json({
             success: false,
             message: "Server error",
-            data: err.message
+            error: err.message
         });
     }
 }
