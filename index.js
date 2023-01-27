@@ -22,6 +22,13 @@ app.use('/api/v1', authRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/banner', bannerRoutes);
 
+const verifyJWT = require('./app/middlewares/verifyJWT');
+app.use(verifyJWT);
+
+app.get('/api/v1/test', (req, res) => {
+    res.send('Hello World!' + req.user);
+})
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
