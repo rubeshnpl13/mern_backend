@@ -8,9 +8,11 @@ dotenv.config()
 const PORT = process.env.PORT || 3000;
 const dbConn = require('./app/config/db');
 dbConn();
+const cors = require('cors');
 
 app.use(express.json());
 app.use(fileUpload());
+app.use(cors());
 
 const userRoutes = require('./app/routes/route.user');
 const bannerRoutes = require('./app/routes/route.banner');
