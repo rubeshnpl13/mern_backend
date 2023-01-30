@@ -23,7 +23,7 @@ app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/banner', bannerRoutes);
 
 const verifyJWT = require('./app/middlewares/verifyJWT');
-app.use(verifyJWT);
+// app.use(verifyJWT);
 
 app.get('/api/v1/test', (req, res) => {
     res.send('Hello World!' + req.user);

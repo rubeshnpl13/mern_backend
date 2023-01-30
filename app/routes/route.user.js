@@ -6,6 +6,9 @@ const validate = require('../middlewares/middleware.validator');
 
 router.route('/')
     .get(UserController.list)
-    .post(validate(adminSchema), UserController.store);
+    .post(validate(adminSchema), UserController.store)
+
+router.route('/:id')
+    .delete(UserController.destroy);
 
 module.exports = router;
