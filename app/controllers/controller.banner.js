@@ -3,8 +3,8 @@ const upload = require('../helpers/fileUploadHelper');
 
 // @desc    Get all banners
 // @route   GET /api/v1/banner
-exports.list = async (req, res) => {
-    try{
+exports.list = async(req, res) => {
+    try {
         const banners = await Banner.find();
         res.status(200).json({
             success: true,
@@ -12,8 +12,7 @@ exports.list = async (req, res) => {
             message: "",
             data: banners,
         });
-    }catch(err)
-    {
+    } catch (err) {
         res.status(500).json({
             success: false,
             message: "Server error",
@@ -25,7 +24,7 @@ exports.list = async (req, res) => {
 // @desc    Add banner
 // @route   POST /api/v1/banner
 exports.store = async(req, res) => {
-    try{
+    try {
         const { title } = req.body;
         const image = await upload(req.files.image, "banners");
 
@@ -33,14 +32,13 @@ exports.store = async(req, res) => {
             title,
             image
         });
-        
+
         res.status(200).json({
             success: true,
             message: "Banner created successfully",
             data: banner
         });
-    }catch(err)
-    {
+    } catch (err) {
         res.status(500).json({
             success: false,
             message: "Server error",
